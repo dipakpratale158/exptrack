@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#header{
+  margin: 13px;
+  text-align: center;
+}
+.expensesform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+table #addedexpenselist {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+}
+button .text-primary {
+  margin: auto 2px auto 8px;
+  margin-bottom: 8px;
+}
+#tableitems {
+  margin:10px auto;
+  max-height:70vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  width: fit-content;
+  border:1px solid gray;
+  box-shadow: 5px 7px 7px 4px rgb(184, 189, 181);
+
+}
+.btn-success {
+  margin-top: 15px;
+}
+.expbtns {
+  padding: 1px 5px 1px 5px;
+  margin: 0px 1px 0px 20vw;
+}
+.expbtns2 {
+  padding: 1px 5px 1px 5px;
+}
