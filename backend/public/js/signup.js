@@ -6,6 +6,12 @@ document.getElementById('signup-form').addEventListener('submit', e=>{
     const password = e.target.passwordInput.value;
 
     if(!name || !email || !password) return;
+
+    if(!name || !email || !password){ 
+      document.querySelector('#Output').innerText= "All fields mandatory.!"
+      alertAwakeSleep();
+      return ;
+    };    
     
     addNewUser(name,email,password);
 })
@@ -51,6 +57,15 @@ async function addNewUser(name,email,password){
       console.log("server returned 201",response.data.UserAddedResponse)
       window.location.href = "/public/view/login.html"
     }
+
+
+    else if(response.status === 400){
+      document.querySelector('#Output').innerText= "All fields mandatory.!"
+      alertAwakeSleep();
+    }   
+
+
+
     else{
       throw new Error("Error creating user");
     }
@@ -58,5 +73,16 @@ async function addNewUser(name,email,password){
       //console.log("server hit error ",err);
       document.querySelector('#Output').innerText= "Email Already Exists. Please Login.;"
       document.querySelector('#error-alert').classList.toggle("hidden")
-  }
+      document.querySelector('#Output').innerText= "Email Already Exists. Please Login.!"
+      alertAwakeSleep();
+    }
+}
+
+
+// function to awake/sleep alert
+function alertAwakeSleep(){
+  document.querySelector('#error-alert').classList.toggle("hidden");
+  setTimeout(function() {
+    document.getElementById("error-alert").classList.toggle("hidden");
+  }, 1500);
 }

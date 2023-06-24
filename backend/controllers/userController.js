@@ -5,6 +5,7 @@ exports.createNewUserController = async (req,res)=>{
         const {name ,email, password} = req.body; 
         if(!name || !email || !password){ throw new Error('all fields are mandatory')}
         const newUser = await UserModel.create({
+            
             name ,email, password
         })
         res.status(201).json({UserAddedResponse:newUser})
