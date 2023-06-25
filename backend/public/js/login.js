@@ -9,7 +9,7 @@ document.getElementById("login-form").addEventListener("submit", (e) => {
     return;
   }
   authenticateLogin(email, password);
-  //empty back form filled:
+  //empty back form :
   e.target.email.value = "";
   e.target.password.value = "";
 });
@@ -22,16 +22,14 @@ async function authenticateLogin(email, password) {
     const obj = { email, password };
     const response = await axios.post("http://localhost:4000/user/login", obj);
     if (response.status === 200) {
-      //console.log("line 25 loginjs: ",response.data.user)
       alert(response.data.message);
-      document.querySelector("#successAlert").innerText = `Hi, ${response.data.user.name}. Login Successful`;
-      successAlertAwakeSleep();
-      //window.location.href = "/public/view/home.html"
+      localStorage.setItem('token',response.data.token)            
+      // Redirect to home page
+     window.location.href = "/view/home.html";
     } else {
       throw new Error("Error in credentials");
     }
   } catch (err) {
-    console.log("error from loginjs catch: ",err)
     document.querySelector("#errorAlert").innerText = `${err.response.data.message}`;
     alertAwakeSleep();
   }
@@ -54,3 +52,6 @@ function successAlertAwakeSleep() {
     document.getElementById("successAlert").classList.toggle("hidden");
   }, 3000);
 }
+
+
+

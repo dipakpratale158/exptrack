@@ -19,8 +19,13 @@ const ExpenseTrackerModel = sequelize.define('user_expenses_tb',{
     category:{
         type:Sequelize.STRING,
         allowNull: false
+    },
+    amountType:{
+        type:Sequelize.STRING,
+        defaultValue: 'expense'
     }
 })
 
-  
+ 
+
 module.exports = ExpenseTrackerModel;
